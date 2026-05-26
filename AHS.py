@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
@@ -37,10 +38,8 @@ SUB_COUNTY_CENTERS = {
 }
 
 # ============================================================================
-# FACILITIES DATA
+# CONTACTS LOOKUP
 # ============================================================================
-
-# ── Contact lookup (phone | email | website) ─────────────────────────────────
 CONTACTS = {
     "Kenyatta National Hospital":               ("0709854000 / 020-2726300","knhadmin@knh.or.ke","knh.or.ke"),
     "Nairobi Hospital":                         ("0703082000","hosp@nbihosp.org","nairobihospital.org"),
@@ -95,7 +94,6 @@ CONTACTS = {
     "Radiant Hosp Kasarani":                    ("020-2720700","",""),
     "Kayole II Sub-District Hospital":          ("020-2717600","",""),
     "Kayole Hospital":                          ("020-2717500","",""),
-    "Mama Lucy Kibaki Hospital - Embakasi":     ("020-2017878","",""),
     "Meridian Equator Hospital":                ("020-2712100","",""),
     "Wentworth Hospital":                       ("020-2713511","",""),
     "Mercylight  Hospital-Lucky Summer":        ("020-2108380","",""),
@@ -103,7 +101,6 @@ CONTACTS = {
     "Lad Nan Hospital":                         ("020-2246464","",""),
     "Mutuini Sub-District Hospital":            ("020-2720000","",""),
     "Jamii Medical Hospital":                   ("020-8015555","",""),
-    # ── AAR ──────────────────────────────────────────────────────────────────
     "AAR Adams Health Centre":                  ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
     "AAR City Centre Clinic":                   ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
     "AAR Clinic Sarit Centre (Westlands)":      ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
@@ -112,23 +109,19 @@ CONTACTS = {
     "AAR Mountain mall":                        ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
     "AAR Thika Road Clinic":                    ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
     "AAR Gwh Health Care Ltd":                  ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
-    # ── Meridian ─────────────────────────────────────────────────────────────
     "Meridian Medical Centre (Kileleshwa)":     ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
     "Meridian Medical centre(Nation Centre Bldg)": ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
     "Meridian Medical Centre (Loita Street)":   ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
     "Meridian Medical Centre (Penson Towers)":  ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
     "Meridian Medical Centre (Buruburu)":       ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
     "Meridian Medical Donholm Clinic":          ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
-    # ── Marie Stopes ─────────────────────────────────────────────────────────
     "Marie Stopes Clinic (Langata)":            ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
     "Marie Stopes Clinic (Kilimani)":           ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
     "Marie Stopes Clinic (Kencom)":             ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
     "Marie Stopes Clinic (Pangani)":            ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
     "Marie Stopes Nursing Home (Eastleigh)":    ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
-    # ── Equity Afia ──────────────────────────────────────────────────────────
     "Equity Afia Kayole":                       ("0763000000","info@equityafia.co.ke","equityafia.co.ke"),
     "Equity Afia Buruburu":                     ("0763000000","info@equityafia.co.ke","equityafia.co.ke"),
-    # ── EDARP ────────────────────────────────────────────────────────────────
     "Mathare 3A (EDARP)":                       ("020-2729000","info@edarp.org","edarp.org"),
     "EDARP Komarock Health Centre":             ("020-2729000","info@edarp.org","edarp.org"),
     "EDARP Ruai Clinic":                        ("020-2729000","info@edarp.org","edarp.org"),
@@ -137,12 +130,10 @@ CONTACTS = {
     "EDARP Soweto Health Centre":               ("020-2729000","info@edarp.org","edarp.org"),
     "EDARP Donholm Clinic":                     ("020-2729000","info@edarp.org","edarp.org"),
     "Kariobangi EDARP":                         ("020-2729000","info@edarp.org","edarp.org"),
-    # ── Provide International ─────────────────────────────────────────────────
     "Provide International Hospital Mukuru":    ("020-2714000","info@provide.or.ke",""),
     "Provide International Clinic (Kayole)":    ("020-2714000","info@provide.or.ke",""),
     "Provide Internatinal Clinic (Dandora)":    ("020-2714000","info@provide.or.ke",""),
     "Provide International Mutindwa Umoja Clinic": ("020-2714000","info@provide.or.ke",""),
-    # ── Health Centres ────────────────────────────────────────────────────────
     "Westlands Health Centre":                  ("020-4443148","",""),
     "Kasarani Health Centre":                   ("020-2714000","",""),
     "Eastleigh Health Centre":                  ("020-2744000","",""),
@@ -156,7 +147,6 @@ CONTACTS = {
     "Msf Olympic Centre":                       ("020-2714000","","msf.org"),
     "Msf- Green House Clinic":                  ("020-2714000","","msf.org"),
     "Silanga (MSF Belgium) Dispensary":         ("020-2714000","","msf.org"),
-    # ── CBOs ─────────────────────────────────────────────────────────────────
     "SHOFCO Health Programme – Kibera":         ("+254 20 2020795","info@shofco.org","shofco.org"),
     "SHOFCO Health Programme – Mathare":        ("+254 20 2020795","info@shofco.org","shofco.org"),
     "CFK Africa Community Health – Kibera":     ("+254 20 3874347","info@cfkafrica.org","cfkafrica.org"),
@@ -182,6 +172,60 @@ CONTACTS = {
     "Kayole Community Health CBO":              ("+254 720 000009","",""),
 }
 
+# ============================================================================
+# CBO KEYWORD DETECTION  — covers all name patterns including em-dash variants
+# ============================================================================
+# Any name containing one of these substrings (case-insensitive) is a CBO.
+_CBO_KEYWORDS = [
+    'cbo', 'shofco', 'solicitude', 'heres life', "here's life",
+    'neema community', 'mirror of hope', 'amref community',
+    'community support group', 'good neighbors kenya',
+    'cfk africa', 'kwosp korogocho', 'mugumoini community',
+    'rida community', 'githurai community health promoters',
+    'ngara community health action', 'kangemi community health',
+    'babadogo community health', 'korogocho community wellness',
+    'eastleigh community health', 'pumwani women health',
+    'mukuru community health', 'kayole community health',
+    'compassion cbo', 'solicitude for orphans',
+]
+
+def _is_cbo(name: str) -> bool:
+    n = name.lower()
+    return any(k in n for k in _CBO_KEYWORDS)
+
+
+# ============================================================================
+# COLOUR MAP
+# ============================================================================
+COLOR_MAP = {
+    'Private':     [30,  136, 229, 200],   # blue
+    'Public':      [0,   0,   0,   200],   # black
+    'Faith Based': [67,  160, 71,  200],   # green
+    'NGO':         [229, 57,  53,  200],   # red
+    'CBO':         [255, 220, 0,   255],   # bright yellow
+}
+
+TYPE_RULES = [
+    ('Health Centre',    'Public'),
+    ('Dispensary',       'Public'),
+    ('Sub-District',     'Public'),
+    ('District Hospital','Public'),
+    ('VCT',              'NGO'),
+    ('NGO',              'NGO'),
+    ('Foundation',       'NGO'),
+    ('Mission',          'Faith Based'),
+    ('St ',              'Faith Based'),
+    ('Church',           'Faith Based'),
+    ('Catholic',         'Faith Based'),
+    ('SDA',              'Faith Based'),
+    ('PCEA',             'Faith Based'),
+    ('Lutheran',         'Faith Based'),
+]
+
+
+# ============================================================================
+# FACILITIES DATA
+# ============================================================================
 @st.cache_data
 def load_all_facilities():
     facilities_data = [
@@ -969,177 +1013,91 @@ def load_all_facilities():
         ("Avenue Hospital","Westlands",-1.2650,36.8060),
         ("Jamii Clinic (Westlands)","Westlands",-1.2630,36.8210),
         ("Mji Wa Huruma Dispensary","Westlands",-1.2640,36.8220),
-        # ══ COMMUNITY BASED ORGANIZATIONS (CBOs) ═════════════════════
-        # 55 verified/documented health-focused CBOs across all 17 Nairobi sub-counties
-        # ── DAGORETTI NORTH (4 CBOs) ─────────────────────────────────
-        # Compassion CBO – HIV/AIDS education, SRHR, Githogoro slum (est. 2008)
+        # ══════════════════════════════════════════════════════════════
+        # COMMUNITY BASED ORGANIZATIONS (CBOs)
+        # ══════════════════════════════════════════════════════════════
+        # ── DAGORETTI NORTH CBOs ─────────────────────────────────────
         ("Compassion CBO","Dagoretti North",-1.2740,36.7750),
-        # Riruta Satellite CBO – maternal & child health outreach, Riruta area
         ("Riruta Satellite Community Health CBO","Dagoretti North",-1.2871,36.7413),
-        # Kilimani Community Health Action CBO – cervical cancer screening, family planning
         ("Kilimani Community Health Action CBO","Dagoretti North",-1.2961,36.8072),
-        # Upper Hill Community Wellness CBO – NCD awareness, Hurlingham/Upper Hill
         ("Upper Hill Community Wellness CBO","Dagoretti North",-1.2946,36.8063),
-        # ── DAGORETTI SOUTH (4 CBOs) ─────────────────────────────────
-        # Kawangware Community Health CBO – primary health outreach, HIV/TB, Kawangware
+        # ── DAGORETTI SOUTH CBOs ─────────────────────────────────────
         ("Kawangware Community Health CBO","Dagoretti South",-1.2878,36.7415),
-        # Waithaka Health Promoters CBO – maternal health, immunisation, Waithaka
         ("Waithaka Health Promoters CBO","Dagoretti South",-1.2804,36.7163),
-        # Uthiru Women & Health CBO – reproductive health, nutrition, Uthiru
         ("Uthiru Women and Health CBO","Dagoretti South",-1.2687,36.7183),
-        # Kabiro Community WASH & Health CBO – sanitation, waterborne disease, Kabiro
         ("Kabiro Community WASH and Health CBO","Dagoretti South",-1.2850,36.7300),
-        # ── EMBAKASI CENTRAL (3 CBOs) ────────────────────────────────
-        # Kayole Community Health CBO – HIV/TB, maternal health, Kayole Soweto
+        # ── EMBAKASI CENTRAL CBOs ────────────────────────────────────
         ("Kayole Community Health CBO","Embakasi Central",-1.2760,36.9105),
-        # Solicitude for Orphans CBO – HIV/AIDS support, OVC, Kayole Soweto (est. 2002)
         ("Solicitude for Orphans and Children CBO","Embakasi Central",-1.2770,36.9110),
-        # Komarock Community Wellness CBO – primary care outreach, NCD, Komarock
         ("Komarock Community Wellness CBO","Embakasi Central",-1.2750,36.9060),
-        # ── EMBAKASI EAST (3 CBOs) ───────────────────────────────────
-        # Good Neighbors Kenya Embakasi – healthcare, nutrition, Embakasi East
+        # ── EMBAKASI EAST CBOs ───────────────────────────────────────
         ("Good Neighbors Kenya – Embakasi East","Embakasi East",-1.3060,36.9100),
-        # Utawala Health Promoters CBO – community health workers, MCH, Utawala
         ("Utawala Health Promoters CBO","Embakasi East",-1.2925,36.9440),
-        # Embakasi Slums Hygiene and Sanitation CBO – WASH, girls health, Embakasi
         ("Embakasi Slums Hygiene and Sanitation CBO","Embakasi East",-1.3075,36.9140),
-        # ── EMBAKASI NORTH (3 CBOs) ──────────────────────────────────
-        # Kwosp Korogocho CBO – HIV prevention, STI, community health, Korogocho
+        # ── EMBAKASI NORTH CBOs ──────────────────────────────────────
         ("Kwosp Korogocho Health CBO","Embakasi North",-1.2470,36.8720),
-        # Dandora Community Health CBO – maternal health, immunisation, lead poisoning awareness
         ("Dandora Community Health CBO","Embakasi North",-1.2555,36.8915),
-        # Kariobangi Community Wellness CBO – HIV, TB, OVC support, Kariobangi
         ("Kariobangi Community Wellness CBO","Embakasi North",-1.2604,36.8884),
-        # ── EMBAKASI SOUTH (3 CBOs) ──────────────────────────────────
-        # Mukuru Community Health CBO – sanitation, maternal health, Mukuru kwa Njenga
+        # ── EMBAKASI SOUTH CBOs ──────────────────────────────────────
         ("Mukuru Community Health CBO","Embakasi South",-1.3180,36.8900),
-        # Viwandani Health Promoters CBO – industrial health, TB, HIV, Viwandani
         ("Viwandani Health Promoters CBO","Embakasi South",-1.3160,36.8860),
-        # Pipeline Community Health CBO – reproductive health, GBV response, Pipeline
         ("Pipeline Community Health CBO","Embakasi South",-1.3190,36.8980),
-        # ── EMBAKASI WEST (3 CBOs) ───────────────────────────────────
-        # Umoja Health Promoters CBO – community health, HIV, Umoja estate
+        # ── EMBAKASI WEST CBOs ───────────────────────────────────────
         ("Umoja Health Promoters CBO","Embakasi West",-1.2915,36.8910),
-        # Kariobangi South Community Health CBO – CHW outreach, MCH, Kariobangi South
         ("Kariobangi South Community Health CBO","Embakasi West",-1.2930,36.8895),
-        # Mama Lucy Zone Health CBO – referral support, women health, Embakasi area
         ("Mama Lucy Zone Community Health CBO","Embakasi West",-1.2740,36.8990),
-        # ── KAMUKUNJI (4 CBOs) ───────────────────────────────────────
-        # Eastleigh Community Health CBO – TB, maternal, refugee health, Eastleigh
+        # ── KAMUKUNJI CBOs ───────────────────────────────────────────
         ("Eastleigh Community Health CBO","Kamukunji",-1.2750,36.8530),
-        # Pumwani Women Health CBO – maternal & newborn health, Pumwani/Majengo
         ("Pumwani Women Health CBO","Kamukunji",-1.2807,36.8455),
-        # Shauri Moyo Community Health CBO – HIV/AIDS, GBV, Shauri Moyo
         ("Shauri Moyo Community Health CBO","Kamukunji",-1.2820,36.8470),
-        # California Community Health CBO – mental health, HIV, youth health, Eastleigh
         ("California Community Health CBO","Kamukunji",-1.2780,36.8540),
-        # ── KASARANI (4 CBOs) ────────────────────────────────────────
-        # Korogocho Community Wellness CBO – HIV, malaria, WASH, Korogocho (Kasarani side)
+        # ── KASARANI CBOs ────────────────────────────────────────────
         ("Korogocho Community Wellness CBO","Kasarani",-1.2450,36.8800),
-        # Ngomongo Community Health CBO – child health, HIV awareness, Korogocho/Ngomongo
         ("Ngomongo Community Health CBO","Kasarani",-1.2440,36.8810),
-        # Ruai Community Health Promoters CBO – MCH, immunisation, Ruai/Njiru
         ("Ruai Community Health Promoters CBO","Kasarani",-1.2500,36.9410),
-        # Mwiki Community Health CBO – CHW network, nutrition, TB, Mwiki
         ("Mwiki Community Health CBO","Kasarani",-1.2050,36.9100),
-        # ── KIBERA (5 CBOs) ──────────────────────────────────────────
-        # SHOFCO – primary care, HIV, MCH, nutrition, Gatwekera/Kibera (est. 2004)
+        # ── KIBERA CBOs ──────────────────────────────────────────────
         ("SHOFCO Health Programme – Kibera","Kibera",-1.3134,36.7877),
-        # CFK Africa (Carolina for Kibera) – community health, GBV, Kibera (est. 2001)
         ("CFK Africa Community Health – Kibera","Kibera",-1.3100,36.7870),
-        # Mirror of Hope CBO – HIV/AIDS women & children, Kibera slum
         ("Mirror of Hope CBO – Kibera","Kibera",-1.3110,36.7880),
-        # Community Support Group (CSG) – health, water, community dev, Kibera (est. 2001)
         ("Community Support Group – Kibera","Kibera",-1.3090,36.7890),
-        # Amref Kibera Community Health – CHW network, HIV testing, family planning
         ("AMREF Community Health Programme – Kibera","Kibera",-1.3060,36.7980),
-        # ── LANGATA (3 CBOs) ─────────────────────────────────────────
-        # Mugumoini Community Health CBO – maternal health, HIV, Langata/Mugumoini
+        # ── LANGATA CBOs ─────────────────────────────────────────────
         ("Mugumoini Community Health CBO","Langata",-1.3500,36.7510),
-        # Karen Langata Health Promoters CBO – NCD, elderly care, Karen area
         ("Karen Langata Health Promoters CBO","Langata",-1.3580,36.7540),
-        # Kibera South Community Health CBO – MSF-supported, HIV, MCH, Kibera South
         ("Kibera South Community Health CBO","Langata",-1.3170,36.7970),
-        # ── MAKADARA (3 CBOs) ────────────────────────────────────────
-        # RIDA Health CBO – OVC, HIV care, community health, Makadara (USAID-supported)
+        # ── MAKADARA CBOs ────────────────────────────────────────────
         ("RIDA Community Health CBO – Makadara","Makadara",-1.2960,36.8640),
-        # Bahati Community Health CBO – HIV/AIDS, TB outreach, Bahati estate
         ("Bahati Community Health CBO","Makadara",-1.2950,36.8670),
-        # Buruburu Community Wellness CBO – mental health, chronic disease, Buruburu
         ("Buruburu Community Wellness CBO","Makadara",-1.2960,36.8720),
-        # ── MATHARE (4 CBOs) ─────────────────────────────────────────
-        # SHOFCO Mathare Health CBO – clinic, CHW network, HIV/TB, Mathare 4A
+        # ── MATHARE CBOs ─────────────────────────────────────────────
         ("SHOFCO Health Programme – Mathare","Mathare",-1.2609,36.8562),
-        # Here's Life CBO – HIV/AIDS care & support, Mathare/Soweto slums (est. 2005)
         ("Heres Life CBO – Mathare","Mathare",-1.2590,36.8570),
-        # Neema CBO Mathare – HIV/AIDS, poverty, community health, Mathare North (est. 2010)
         ("Neema Community CBO – Mathare","Mathare",-1.2570,36.8590),
-        # Huruma Community Health Action CBO – maternal health, nutrition, Huruma
         ("Huruma Community Health Action CBO","Mathare",-1.2570,36.8580),
-        # ── ROYSAMBU (3 CBOs) ────────────────────────────────────────
-        # Githurai Community Health Promoters CBO – HIV, immunisation, Githurai 44/45
+        # ── ROYSAMBU CBOs ────────────────────────────────────────────
         ("Githurai Community Health Promoters CBO","Roysambu",-1.1920,36.9060),
-        # Zimmerman Health Action CBO – chronic disease, TB, HIV, Zimmerman estate
         ("Zimmerman Health Action CBO","Roysambu",-1.2140,36.8780),
-        # Kahawa West Community Health CBO – maternal/child health, CHW outreach
         ("Kahawa West Community Health CBO","Roysambu",-1.2050,36.8850),
-        # ── RUARAKA (3 CBOs) ─────────────────────────────────────────
-        # Babadogo Community Health CBO – CHW program, TB/HIV outreach, Babadogo
+        # ── RUARAKA CBOs ─────────────────────────────────────────────
         ("Babadogo Community Health CBO","Ruaraka",-1.2462,36.8710),
-        # Mathare North Health Promoters CBO – sanitation, GBV, reproductive health
         ("Mathare North Health Promoters CBO","Ruaraka",-1.2440,36.8700),
-        # Lucky Summer Community Health CBO – nutrition, MCH, immunisation, Lucky Summer
         ("Lucky Summer Community Health CBO","Ruaraka",-1.2400,36.8720),
-        # ── STAREHE (3 CBOs) ─────────────────────────────────────────
-        # Ngara Community Health Action CBO – TB, mental health, HIV, Ngara
+        # ── STAREHE CBOs ─────────────────────────────────────────────
         ("Ngara Community Health Action CBO","Starehe",-1.2710,36.8455),
-        # Pangani Community Health CBO – youth sexual health, HIV, Pangani
         ("Pangani Community Health CBO","Starehe",-1.2700,36.8460),
-        # Nairobi South B Community Health CBO – NCDs, elderly health, South B
         ("South B Community Health CBO","Starehe",-1.3050,36.8350),
-        # ── WESTLANDS (4 CBOs) ───────────────────────────────────────
-        # Kangemi Community Health CBO – maternal/child health, HIV, Kangemi
+        # ── WESTLANDS CBOs ───────────────────────────────────────────
         ("Kangemi Community Health CBO","Westlands",-1.2545,36.7820),
-        # Compassion CBO Githogoro – HIV/AIDS, SRHR, anti-FGM, Githogoro/Westlands (est. 2008)
         ("Compassion CBO – Githogoro Westlands","Westlands",-1.2200,36.8240),
-        # Parklands Community Health Promoters CBO – NCD, elderly care, Parklands
         ("Parklands Community Health Promoters CBO","Westlands",-1.2580,36.8120),
-        # Kibagare Community Health CBO – HIV, TB, maternal health, Kibagare
         ("Kibagare Community Health CBO","Westlands",-1.2530,36.7800),
     ]
 
-    # Build colour and type
-    TYPE_RULES = [
-        ('CBO',           'CBO'),
-        ('Health Centre', 'Public'),
-        ('Dispensary',    'Public'),
-        ('Sub-District',  'Public'),
-        ('District Hospital','Public'),
-        ('VCT',           'NGO'),
-        ('NGO',           'NGO'),
-        ('Foundation',    'NGO'),
-        ('Mission',       'Faith Based'),
-        ('St ',           'Faith Based'),
-        ('Church',        'Faith Based'),
-        ('Catholic',      'Faith Based'),
-        ('SDA',           'Faith Based'),
-        ('PCEA',          'Faith Based'),
-        ('Lutheran',      'Faith Based'),
-    ]
-    COLOR_MAP = {
-        'Private':    [30, 136, 229, 200],
-        'Public':     [0,  0,   0,   200],
-        'Faith Based':[67, 160, 71,  200],
-        'NGO':        [229, 57,  53, 200],
-        'CBO':        [255, 220, 0, 255],
-    }
-
     rows = []
     for name, sc, lat, lng in facilities_data:
-        # Hard-coded CBO detection: any entry whose name ends with 'CBO'
-        # or contains 'CBO' anywhere (catches em-dash variants like 'SHOFCO ... – Kibera')
-        name_up = name.upper()
-        if 'CBO' in name_up or 'SHOFCO' in name_up or 'SOLICITUDE' in name_up or 'HERES LIFE' in name_up or 'NEEMA COMMUNITY' in name_up or 'MIRROR OF HOPE' in name_up or 'AMREF COMMUNITY' in name_up or 'COMMUNITY SUPPORT GROUP' in name_up or 'GOOD NEIGHBORS KENYA' in name_up:
+        # ── Determine facility type ──────────────────────────────────
+        if _is_cbo(name):
             ftype = 'CBO'
         else:
             ftype = 'Private'
@@ -1147,25 +1105,28 @@ def load_all_facilities():
                 if keyword.lower() in name.lower():
                     ftype = t
                     break
-        color = COLOR_MAP[ftype]
+
+        # ── Assign RGBA as separate integer columns (pydeck requirement) ──
+        r, g, b, a = COLOR_MAP[ftype]
         c = CONTACTS.get(name, ('', '', ''))
+
         rows.append({
-            'name': name,
+            'name':       name,
             'sub_county': sc,
-            'type': ftype,
-            'lat': lat,
-            'lon': lng,
-            'r': color[0],
-            'g': color[1],
-            'b': color[2],
-            'a': color[3],
-            'phone': c[0],
-            'email': c[1],
-            'website': c[2],
+            'type':       ftype,
+            'lat':        lat,
+            'lon':        lng,
+            'r':          int(r),
+            'g':          int(g),
+            'b':          int(b),
+            'a':          int(a),
+            'phone':      c[0],
+            'email':      c[1],
+            'website':    c[2],
         })
-    df = pd.DataFrame(rows)
-    df['color'] = df.apply(lambda row: [row['r'], row['g'], row['b'], row['a']], axis=1)
-    return df
+
+    return pd.DataFrame(rows)
+
 
 # ============================================================================
 # MAIN APP
@@ -1179,27 +1140,26 @@ def main():
         sc_counts = df['sub_county'].value_counts()
         st.metric("Total Sub-Counties", 17)
         st.metric("Total Health Facilities", len(df))
-        st.metric("🩷 Health CBOs", len(df[df['type']=='CBO']))
+        st.metric("🟡 Health CBOs", int((df['type'] == 'CBO').sum()))
 
         st.markdown("---")
-        # Quick CBO highlight button
-        if st.button("🩷 Show CBOs Only"):
+        if st.button("🟡 Show CBOs Only"):
             st.session_state['cbo_only'] = True
         if st.button("🔄 Show All Facilities"):
             st.session_state['cbo_only'] = False
+
         st.markdown("---")
         st.subheader("Filter by Sub-County")
         all_sc = sorted(df['sub_county'].unique())
         selected_sc = st.multiselect("Select Sub-County (blank = all)", all_sc)
 
         st.subheader("Filter by Facility Type")
-        # Fixed order so CBO always appears even when filtered
         all_types = ["Private", "Public", "Faith Based", "NGO", "CBO"]
         selected_types = st.multiselect(
             "Select Type (blank = all)",
             options=all_types,
             default=[],
-            help="🟡 CBOs are shown as yellow dots on the map"
+            help="🟡 CBOs are shown as larger yellow dots on the map"
         )
 
         st.markdown("---")
@@ -1215,7 +1175,6 @@ def main():
 
     # ── Apply filters ────────────────────────────────────────────────────────
     filtered = df.copy()
-    # CBO-only quick filter
     if st.session_state.get('cbo_only', False):
         filtered = filtered[filtered['type'] == 'CBO']
     else:
@@ -1224,55 +1183,55 @@ def main():
         if selected_types:
             filtered = filtered[filtered['type'].isin(selected_types)]
 
-    # ── Summary metrics ──────────────────────────────────────────────────────
-    col1, col2, col3, col4, col5 = st.columns(5)
+    # ── Summary dashboard metrics ────────────────────────────────────────────
     type_counts = filtered['type'].value_counts()
+    col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
-        st.metric("🔵 Private",     type_counts.get('Private', 0))
+        st.metric("🔵 Private",     int(type_counts.get('Private', 0)))
     with col2:
-        st.metric("⚫ Public",      type_counts.get('Public', 0))
+        st.metric("⚫ Public",      int(type_counts.get('Public', 0)))
     with col3:
-        st.metric("🟢 Faith Based", type_counts.get('Faith Based', 0))
+        st.metric("🟢 Faith Based", int(type_counts.get('Faith Based', 0)))
     with col4:
-        st.metric("🔴 NGO",         type_counts.get('NGO', 0))
+        st.metric("🔴 NGO",         int(type_counts.get('NGO', 0)))
     with col5:
-        st.metric("🟡 CBO",          type_counts.get('CBO', 0))
+        st.metric("🟡 CBO",         int(type_counts.get('CBO', 0)))
 
     st.markdown(f"**Showing {len(filtered)} of {len(df)} facilities**")
 
     # ── Legend ───────────────────────────────────────────────────────────────
     st.markdown("""
     <div style="display:flex;gap:24px;padding:8px 12px;background:#f0f4f8;
-                border-radius:8px;margin-bottom:8px;font-size:13px;">
+                border-radius:8px;margin-bottom:8px;font-size:13px;flex-wrap:wrap;">
         <span><span style="color:#1E88E5;font-size:18px;">●</span> Private</span>
         <span><span style="color:#000;font-size:18px;">●</span> Public</span>
         <span><span style="color:#43A047;font-size:18px;">●</span> Faith Based</span>
         <span><span style="color:#E53935;font-size:18px;">●</span> NGO</span>
-        <span><span style="color:#FFDC00;font-size:22px;text-shadow:0 0 2px #888;">●</span> <b>CBO</b> (Community Based Org)</span>
-        <span style="margin-left:auto;color:#555;">Hover over dots for details &nbsp;|&nbsp; Scroll to zoom</span>
+        <span><span style="color:#FFDC00;font-size:22px;text-shadow:0 0 3px #999;">●</span>
+              <b>CBO</b> (Community Based Org — larger yellow dots)</span>
+        <span style="margin-left:auto;color:#555;">Hover dots for details &nbsp;|&nbsp; Scroll to zoom</span>
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Sub-county label layer ────────────────────────────────────────────────
-    sc_label_data = []
-    for sc, (lat, lon) in SUB_COUNTY_CENTERS.items():
-        cnt = len(filtered[filtered['sub_county'] == sc])
-        sc_label_data.append({'name': sc, 'count': cnt, 'lat': lat, 'lon': lon})
-    sc_label_df = pd.DataFrame(sc_label_data)
+    # ── Sub-county label data ─────────────────────────────────────────────────
+    sc_label_df = pd.DataFrame([
+        {'name': sc, 'lat': coords[0], 'lon': coords[1],
+         'count': int((filtered['sub_county'] == sc).sum())}
+        for sc, coords in SUB_COUNTY_CENTERS.items()
+    ])
+
+    # ── Split data: base facilities vs CBOs ──────────────────────────────────
+    # CBOs rendered on top with larger, stroked yellow dots
+    base_df = filtered[filtered['type'] != 'CBO'].copy()
+    cbo_df  = filtered[filtered['type'] == 'CBO'].copy()
 
     # ── pydeck layers ────────────────────────────────────────────────────────
-    # Split into non-CBO (base) and CBO (top, larger yellow dots)
-    non_cbo_df = filtered[filtered['type'] != 'CBO'].copy()
-    cbo_df     = filtered[filtered['type'] == 'CBO'].copy()
-
-    non_cbo_records = non_cbo_df.to_dict('records')
-    cbo_records     = cbo_df.to_dict('records')
-
-    scatter_layer = pdk.Layer(
+    # Layer 1: all non-CBO facilities
+    base_layer = pdk.Layer(
         'ScatterplotLayer',
-        data=non_cbo_records,
+        data=base_df.to_dict('records'),
         get_position=['lon', 'lat'],
-        get_fill_color=['r', 'g', 'b', 'a'],
+        get_fill_color=['r', 'g', 'b', 'a'],   # integer columns — correct pydeck syntax
         get_radius=100,
         radius_min_pixels=4,
         radius_max_pixels=12,
@@ -1280,24 +1239,26 @@ def main():
         auto_highlight=True,
     )
 
+    # Layer 2: CBOs — larger, bright yellow with gold border, always on top
     cbo_layer = pdk.Layer(
         'ScatterplotLayer',
-        data=cbo_records,
+        data=cbo_df.to_dict('records'),
         get_position=['lon', 'lat'],
-        get_fill_color=['r', 'g', 'b', 'a'],
-        get_line_color=[180, 140, 0, 255],
-        get_radius=180,
+        get_fill_color=[255, 220, 0, 255],       # hard-coded bright yellow
+        get_line_color=[180, 130, 0, 255],        # gold border
+        get_radius=200,
         radius_min_pixels=9,
-        radius_max_pixels=22,
+        radius_max_pixels=24,
         pickable=True,
         auto_highlight=True,
         stroked=True,
         line_width_min_pixels=2,
     )
 
+    # Layer 3: sub-county name labels
     text_layer = pdk.Layer(
         'TextLayer',
-        data=sc_label_df,
+        data=sc_label_df.to_dict('records'),
         get_position='[lon, lat]',
         get_text='name',
         get_size=12,
@@ -1332,7 +1293,7 @@ def main():
     }
 
     deck = pdk.Deck(
-        layers=[scatter_layer, cbo_layer, text_layer],
+        layers=[base_layer, cbo_layer, text_layer],  # CBOs always rendered last = on top
         initial_view_state=view_state,
         tooltip=tooltip,
         map_style='road',
@@ -1360,10 +1321,11 @@ def main():
     st.markdown(
         "<div style='text-align:center;color:gray;font-size:12px;'>"
         "🏥 Nairobi Health Facilities Map · 17 Sub-Counties · "
-        "pydeck map (no external map library required)"
+        "pydeck map"
         "</div>",
         unsafe_allow_html=True,
     )
+
 
 if __name__ == "__main__":
     main()
