@@ -1131,16 +1131,22 @@ def load_all_facilities():
         'Public':     [0,  0,   0,   200],
         'Faith Based':[67, 160, 71,  200],
         'NGO':        [229, 57,  53, 200],
-        'CBO':        [255, 20, 147, 240],
+        'CBO':        [255, 220, 0, 255],
     }
 
     rows = []
     for name, sc, lat, lng in facilities_data:
-        ftype = 'Private'
-        for keyword, t in TYPE_RULES:
-            if keyword.lower() in name.lower():
-                ftype = t
-                break
+        # Hard-coded CBO detection: any entry whose name ends with 'CBO'
+        # or contains 'CBO' anywhere (catches em-dash variants like 'SHOFCO ... – Kibera')
+        name_up = name.upper()
+        if 'CBO' in name_up or 'SHOFCO' in name_up or 'SOLICITUDE' in name_up or 'HERES LIFE' in name_up or 'NEEMA COMMUNITY' in name_up or 'MIRROR OF HOPE' in name_up or 'AMREF COMMUNITY' in name_up or 'COMMUNITY SUPPORT GROUP' in name_up or 'GOOD NEIGHBORS KENYA' in name_up:
+            ftype = 'CBO'
+        else:
+            ftype = 'Private'
+            for keyword, t in TYPE_RULES:
+                if keyword.lower() in name.lower():
+                    ftype = t
+                    break
         color = COLOR_MAP[ftype]
         c = CONTACTS.get(name, ('', '', ''))
         rows.append({
@@ -1149,12 +1155,17 @@ def load_all_facilities():
             'type': ftype,
             'lat': lat,
             'lon': lng,
-            'color': color,
+            'r': color[0],
+            'g': color[1],
+            'b': color[2],
+            'a': color[3],
             'phone': c[0],
             'email': c[1],
             'website': c[2],
         })
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+    df['color'] = df.apply(lambda row: [row['r'], row['g'], row['b'], row['a']], axis=1)
+    return df
 
 # ============================================================================
 # MAIN APP
@@ -1188,7 +1199,7 @@ def main():
             "Select Type (blank = all)",
             options=all_types,
             default=[],
-            help="🩷 CBOs are shown in hot pink on the map"
+            help="🟡 CBOs are shown as yellow dots on the map"
         )
 
         st.markdown("---")
@@ -1198,7 +1209,7 @@ def main():
 
         st.markdown("---")
         st.info(
-            "🔵 Private · ⚫ Public · 🟢 Faith Based · 🔴 NGO · 🩷 CBO\n\n"
+            "🔵 Private · ⚫ Public · 🟢 Faith Based · 🔴 NGO · 🟡 CBO\n\n"
             "Use the filters above to narrow the map."
         )
 
@@ -1225,7 +1236,7 @@ def main():
     with col4:
         st.metric("🔴 NGO",         type_counts.get('NGO', 0))
     with col5:
-        st.metric("🩷 CBO",          type_counts.get('CBO', 0))
+        st.metric("🟡 CBO",          type_counts.get('CBO', 0))
 
     st.markdown(f"**Showing {len(filtered)} of {len(df)} facilities**")
 
@@ -1237,7 +1248,7 @@ def main():
         <span><span style="color:#000;font-size:18px;">●</span> Public</span>
         <span><span style="color:#43A047;font-size:18px;">●</span> Faith Based</span>
         <span><span style="color:#E53935;font-size:18px;">●</span> NGO</span>
-        <span><span style="color:#FF1493;font-size:22px;">●</span> <b>CBO</b> (Community Based Org)</span>
+        <span><span style="color:#FFDC00;font-size:22px;text-shadow:0 0 2px #888;">●</span> <b>CBO</b> (Community Based Org)</span>
         <span style="margin-left:auto;color:#555;">Hover over dots for details &nbsp;|&nbsp; Scroll to zoom</span>
     </div>
     """, unsafe_allow_html=True)
@@ -1250,16 +1261,38 @@ def main():
     sc_label_df = pd.DataFrame(sc_label_data)
 
     # ── pydeck layers ────────────────────────────────────────────────────────
+    # Split into non-CBO (base) and CBO (top, larger yellow dots)
+    non_cbo_df = filtered[filtered['type'] != 'CBO'].copy()
+    cbo_df     = filtered[filtered['type'] == 'CBO'].copy()
+
+    non_cbo_records = non_cbo_df.to_dict('records')
+    cbo_records     = cbo_df.to_dict('records')
+
     scatter_layer = pdk.Layer(
         'ScatterplotLayer',
-        data=filtered,
-        get_position='[lon, lat]',
-        get_color='color',
-        get_radius=110,
+        data=non_cbo_records,
+        get_position=['lon', 'lat'],
+        get_fill_color=['r', 'g', 'b', 'a'],
+        get_radius=100,
         radius_min_pixels=4,
         radius_max_pixels=12,
         pickable=True,
         auto_highlight=True,
+    )
+
+    cbo_layer = pdk.Layer(
+        'ScatterplotLayer',
+        data=cbo_records,
+        get_position=['lon', 'lat'],
+        get_fill_color=['r', 'g', 'b', 'a'],
+        get_line_color=[180, 140, 0, 255],
+        get_radius=180,
+        radius_min_pixels=9,
+        radius_max_pixels=22,
+        pickable=True,
+        auto_highlight=True,
+        stroked=True,
+        line_width_min_pixels=2,
     )
 
     text_layer = pdk.Layer(
@@ -1299,7 +1332,7 @@ def main():
     }
 
     deck = pdk.Deck(
-        layers=[scatter_layer, text_layer],
+        layers=[scatter_layer, cbo_layer, text_layer],
         initial_view_state=view_state,
         tooltip=tooltip,
         map_style='road',
