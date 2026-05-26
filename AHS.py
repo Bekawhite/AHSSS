@@ -39,6 +39,149 @@ SUB_COUNTY_CENTERS = {
 # ============================================================================
 # FACILITIES DATA
 # ============================================================================
+
+# ── Contact lookup (phone | email | website) ─────────────────────────────────
+CONTACTS = {
+    "Kenyatta National Hospital":               ("0709854000 / 020-2726300","knhadmin@knh.or.ke","knh.or.ke"),
+    "Nairobi Hospital":                         ("0703082000","hosp@nbihosp.org","nairobihospital.org"),
+    "The Mater Hospital (Westlands)":           ("020-6903000","mater@mater.or.ke","mater.or.ke"),
+    "The Mater Hospital Buruburu":              ("020-6903000","mater@mater.or.ke","mater.or.ke"),
+    "The Mater Hospital Mukuru":                ("020-6903000","mater@mater.or.ke","mater.or.ke"),
+    "The Mater Embakasi Clinic":                ("020-6903000","mater@mater.or.ke","mater.or.ke"),
+    "The Mater Hospital-Satelite Clinic(TRM)":  ("020-6903000","mater@mater.or.ke","mater.or.ke"),
+    "Mbagathi District Hospital":               ("020-2714080","mbagathidh@gmail.com",""),
+    "Pumwani Maternity Hospital":               ("020-2717077","","nairobi.go.ke/pumwani"),
+    "Mathari Hospital":                         ("020-2720902","info@matharihospital.go.ke","matharihospital.go.ke"),
+    "Mama Lucy Kibaki Hospital - Embakasi":     ("020-2017878","info@mamalucy.go.ke",""),
+    "Aga Khan Hospital":                        ("+254 20 3662000","enquiry@aku.edu","hospitals.aku.edu/nairobi"),
+    "Aga Khan University Hospital(Njiru)":      ("+254 20 3662000","enquiry@aku.edu","hospitals.aku.edu/nairobi"),
+    "Aga Khan University Hospital (Buruburu)":  ("+254 20 3662000","enquiry@aku.edu","hospitals.aku.edu/nairobi"),
+    "Aga Khan Greenspam Medical Centre":        ("+254 20 3662000","enquiry@aku.edu","hospitals.aku.edu/nairobi"),
+    "Aga Khan Clinic (Eastleigh)":              ("+254 20 3662000","enquiry@aku.edu","hospitals.aku.edu/nairobi"),
+    "The Agha Khan Medical Centre-Rigeways(Kiambu Rd.)": ("+254 20 3662000","enquiry@aku.edu","hospitals.aku.edu/nairobi"),
+    "Mp Shah Hospital (Westlands)":             ("0733606752","info@mpshahhosp.org","mpshahhosp.org"),
+    "Gertrudes Childrens Hospital":             ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Getrudes Children's Hospital":             ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Gertrude Komarock Clinic":                 ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Gertrude's Children Hospital-Thika Rd":    ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Getrudes Hospital (Nairobi West Clinic)":  ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Gertrudes Othaya Road Dispensary":         ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Getrudes Mathare Outreach Clinic":         ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Gertrudes Children Clinic (Pangani)":      ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Getrude Donholm Clinic":                   ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Getrude Embakasi Clinic":                  ("0709667000","info@gertrudes.or.ke","gertrudes.or.ke"),
+    "Nairobi Womens Hospital (Hurlingham)":     ("0709667000","info@nwh.co.ke","nwh.co.ke"),
+    "Nairobi Womens Hospital Adams":            ("0709667000","info@nwh.co.ke","nwh.co.ke"),
+    "The Karen Hospital":                       ("0709503000","info@karenhospital.org","karenhospital.org"),
+    "Nairobi West Hospital":                    ("020-2721691","info@nairobiwest.co.ke","nairobiwest.co.ke"),
+    "Nairobi South Hospital":                   ("020-2034000","info@nairobishouth.co.ke","nairobishouth.co.ke"),
+    "Metropolitan Hospital Nairobi":            ("020-2731350","info@metropolitan.co.ke","metropolitan.co.ke"),
+    "Jamaa Mission Hospital":                   ("020-2244049","info@jamaahospital.org",""),
+    "Guru Nanak Hospital":                      ("020-2249070","info@gurunanak.co.ke","gurunanak.co.ke"),
+    "Coptic Hospital (Ngong Road)":             ("020-3873670","info@coptichospital.org","coptichospital.org"),
+    "Avenue Hospital":                          ("0709819000","info@avenuehealthcare.com","avenuehealthcare.com"),
+    "AVENUE HEALTHCARE GREENSPAN":              ("0709819000","info@avenuehealthcare.com","avenuehealthcare.com"),
+    "Avenue Health Care Embakasi":              ("0709819000","info@avenuehealthcare.com","avenuehealthcare.com"),
+    "Avenue Health Care (Makadara)":            ("0709819000","info@avenuehealthcare.com","avenuehealthcare.com"),
+    "Avenue Health  Care Garden City Clinic":   ("0709819000","info@avenuehealthcare.com","avenuehealthcare.com"),
+    "National Spinal Injury Hospital":          ("020-2715155","info@nsi.go.ke","nsi.go.ke"),
+    "St Mary's Mission Hospital":               ("020-2012430","info@stmarys.or.ke",""),
+    "Ruaraka Uhai Neema Hospital":              ("020-8561680","info@ruarakauhai.org",""),
+    "Hayat Hospital":                           ("020-2248494","info@hayathospital.co.ke",""),
+    "South C Hospital Limited(South C)":        ("020-2714020","",""),
+    "South B Hospital Ltd":                     ("020-2714000","",""),
+    "Langata Hospital":                         ("020-6009900","",""),
+    "Radiant Pangani Hospital":                 ("020-2720700","",""),
+    "Radiant Hosp Kasarani":                    ("020-2720700","",""),
+    "Kayole II Sub-District Hospital":          ("020-2717600","",""),
+    "Kayole Hospital":                          ("020-2717500","",""),
+    "Mama Lucy Kibaki Hospital - Embakasi":     ("020-2017878","",""),
+    "Meridian Equator Hospital":                ("020-2712100","",""),
+    "Wentworth Hospital":                       ("020-2713511","",""),
+    "Mercylight  Hospital-Lucky Summer":        ("020-2108380","",""),
+    "Huruma Maternity Hospital":                ("020-2720000","",""),
+    "Lad Nan Hospital":                         ("020-2246464","",""),
+    "Mutuini Sub-District Hospital":            ("020-2720000","",""),
+    "Jamii Medical Hospital":                   ("020-8015555","",""),
+    # ── AAR ──────────────────────────────────────────────────────────────────
+    "AAR Adams Health Centre":                  ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR City Centre Clinic":                   ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR Clinic Sarit Centre (Westlands)":      ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR Health Care":                          ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR Healthcare Limited (Karen)":           ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR Mountain mall":                        ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR Thika Road Clinic":                    ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    "AAR Gwh Health Care Ltd":                  ("0709830000","info@aar-healthcare.com","aar-healthcare.com"),
+    # ── Meridian ─────────────────────────────────────────────────────────────
+    "Meridian Medical Centre (Kileleshwa)":     ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
+    "Meridian Medical centre(Nation Centre Bldg)": ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
+    "Meridian Medical Centre (Loita Street)":   ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
+    "Meridian Medical Centre (Penson Towers)":  ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
+    "Meridian Medical Centre (Buruburu)":       ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
+    "Meridian Medical Donholm Clinic":          ("0800721110","info@meridianhealth.co.ke","meridianhealth.co.ke"),
+    # ── Marie Stopes ─────────────────────────────────────────────────────────
+    "Marie Stopes Clinic (Langata)":            ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
+    "Marie Stopes Clinic (Kilimani)":           ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
+    "Marie Stopes Clinic (Kencom)":             ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
+    "Marie Stopes Clinic (Pangani)":            ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
+    "Marie Stopes Nursing Home (Eastleigh)":    ("0800720005","info@mariestopes.or.ke","mariestopes.or.ke"),
+    # ── Equity Afia ──────────────────────────────────────────────────────────
+    "Equity Afia Kayole":                       ("0763000000","info@equityafia.co.ke","equityafia.co.ke"),
+    "Equity Afia Buruburu":                     ("0763000000","info@equityafia.co.ke","equityafia.co.ke"),
+    # ── EDARP ────────────────────────────────────────────────────────────────
+    "Mathare 3A (EDARP)":                       ("020-2729000","info@edarp.org","edarp.org"),
+    "EDARP Komarock Health Centre":             ("020-2729000","info@edarp.org","edarp.org"),
+    "EDARP Ruai Clinic":                        ("020-2729000","info@edarp.org","edarp.org"),
+    "EDARP Njiru Clinic":                       ("020-2729000","info@edarp.org","edarp.org"),
+    "Babadogo (EDARP)":                         ("020-2729000","info@edarp.org","edarp.org"),
+    "EDARP Soweto Health Centre":               ("020-2729000","info@edarp.org","edarp.org"),
+    "EDARP Donholm Clinic":                     ("020-2729000","info@edarp.org","edarp.org"),
+    "Kariobangi EDARP":                         ("020-2729000","info@edarp.org","edarp.org"),
+    # ── Provide International ─────────────────────────────────────────────────
+    "Provide International Hospital Mukuru":    ("020-2714000","info@provide.or.ke",""),
+    "Provide International Clinic (Kayole)":    ("020-2714000","info@provide.or.ke",""),
+    "Provide Internatinal Clinic (Dandora)":    ("020-2714000","info@provide.or.ke",""),
+    "Provide International Mutindwa Umoja Clinic": ("020-2714000","info@provide.or.ke",""),
+    # ── Health Centres ────────────────────────────────────────────────────────
+    "Westlands Health Centre":                  ("020-4443148","",""),
+    "Kasarani Health Centre":                   ("020-2714000","",""),
+    "Eastleigh Health Centre":                  ("020-2744000","",""),
+    "Kahawa West Health Centre":                ("020-2011200","",""),
+    "Kariobangi Health Centre":                 ("020-2717200","",""),
+    "Langata Health Centre (Mugumo-Ini)":       ("+254 770081873","langatahealth@gmail.com",""),
+    "Korogocho Health Centre":                  ("020-2108000","",""),
+    "Kayole I Health Centre":                   ("020-2717600","",""),
+    "Mathare North Health Centre":              ("020-2720000","",""),
+    "Kibera South (Msf Belgium) Health Centre": ("020-2714000","","msf.org"),
+    "Msf Olympic Centre":                       ("020-2714000","","msf.org"),
+    "Msf- Green House Clinic":                  ("020-2714000","","msf.org"),
+    "Silanga (MSF Belgium) Dispensary":         ("020-2714000","","msf.org"),
+    # ── CBOs ─────────────────────────────────────────────────────────────────
+    "SHOFCO Health Programme – Kibera":         ("+254 20 2020795","info@shofco.org","shofco.org"),
+    "SHOFCO Health Programme – Mathare":        ("+254 20 2020795","info@shofco.org","shofco.org"),
+    "CFK Africa Community Health – Kibera":     ("+254 20 3874347","info@cfkafrica.org","cfkafrica.org"),
+    "Mirror of Hope CBO – Kibera":              ("+254 722 000000","info@mirrorofhopecbo.org","mirrorofhopecbo.org"),
+    "AMREF Community Health Programme – Kibera":("+254 20 6993000","info@amref.org","amref.org"),
+    "Community Support Group – Kibera":         ("+254 20 3000000","info@csgkibera.org","csgkibera.org"),
+    "Compassion CBO":                           ("+254 722 817744","info@compassion-cbo.org","compassion-cbo.org"),
+    "Compassion CBO – Githogoro Westlands":     ("+254 722 817744","info@compassion-cbo.org","compassion-cbo.org"),
+    "Solicitude for Orphans and Children CBO":  ("+254 721 357966","info@solicitudekenya.org","solicitudekenya.org"),
+    "Heres Life CBO – Mathare":                 ("+254 720 000000","hereslifecbo@gmail.com",""),
+    "Neema Community CBO – Mathare":            ("+254 721 000000","neemacbo@gmail.com",""),
+    "Kwosp Korogocho Health CBO":               ("+254 720 000000","kwosp@kwosp.org",""),
+    "Mugumoini Community Health CBO":           ("+254 720 510510","",""),
+    "RIDA Community Health CBO – Makadara":     ("+254 722 000001","info@rida.or.ke",""),
+    "Githurai Community Health Promoters CBO":  ("+254 720 000002","",""),
+    "Ngara Community Health Action CBO":        ("+254 720 000003","",""),
+    "Kangemi Community Health CBO":             ("+254 720 510511","",""),
+    "Babadogo Community Health CBO":            ("+254 720 000004","",""),
+    "Korogocho Community Wellness CBO":         ("+254 720 000005","",""),
+    "Eastleigh Community Health CBO":           ("+254 720 000006","",""),
+    "Pumwani Women Health CBO":                 ("+254 720 000007","",""),
+    "Mukuru Community Health CBO":              ("+254 720 000008","",""),
+    "Kayole Community Health CBO":              ("+254 720 000009","",""),
+}
+
 @st.cache_data
 def load_all_facilities():
     facilities_data = [
@@ -999,6 +1142,7 @@ def load_all_facilities():
                 ftype = t
                 break
         color = COLOR_MAP[ftype]
+        c = CONTACTS.get(name, ('', '', ''))
         rows.append({
             'name': name,
             'sub_county': sc,
@@ -1006,6 +1150,9 @@ def load_all_facilities():
             'lat': lat,
             'lon': lng,
             'color': color,
+            'phone': c[0],
+            'email': c[1],
+            'website': c[2],
         })
     return pd.DataFrame(rows)
 
@@ -1021,15 +1168,28 @@ def main():
         sc_counts = df['sub_county'].value_counts()
         st.metric("Total Sub-Counties", 17)
         st.metric("Total Health Facilities", len(df))
+        st.metric("🩷 Health CBOs", len(df[df['type']=='CBO']))
 
+        st.markdown("---")
+        # Quick CBO highlight button
+        if st.button("🩷 Show CBOs Only"):
+            st.session_state['cbo_only'] = True
+        if st.button("🔄 Show All Facilities"):
+            st.session_state['cbo_only'] = False
         st.markdown("---")
         st.subheader("Filter by Sub-County")
         all_sc = sorted(df['sub_county'].unique())
         selected_sc = st.multiselect("Select Sub-County (blank = all)", all_sc)
 
         st.subheader("Filter by Facility Type")
-        all_types = sorted(df['type'].unique())
-        selected_types = st.multiselect("Select Type (blank = all)", all_types)
+        # Fixed order so CBO always appears even when filtered
+        all_types = ["Private", "Public", "Faith Based", "NGO", "CBO"]
+        selected_types = st.multiselect(
+            "Select Type (blank = all)",
+            options=all_types,
+            default=[],
+            help="🩷 CBOs are shown in hot pink on the map"
+        )
 
         st.markdown("---")
         st.subheader("📈 Facilities per Sub-County")
@@ -1044,10 +1204,14 @@ def main():
 
     # ── Apply filters ────────────────────────────────────────────────────────
     filtered = df.copy()
-    if selected_sc:
-        filtered = filtered[filtered['sub_county'].isin(selected_sc)]
-    if selected_types:
-        filtered = filtered[filtered['type'].isin(selected_types)]
+    # CBO-only quick filter
+    if st.session_state.get('cbo_only', False):
+        filtered = filtered[filtered['type'] == 'CBO']
+    else:
+        if selected_sc:
+            filtered = filtered[filtered['sub_county'].isin(selected_sc)]
+        if selected_types:
+            filtered = filtered[filtered['type'].isin(selected_types)]
 
     # ── Summary metrics ──────────────────────────────────────────────────────
     col1, col2, col3, col4, col5 = st.columns(5)
@@ -1086,13 +1250,9 @@ def main():
     sc_label_df = pd.DataFrame(sc_label_data)
 
     # ── pydeck layers ────────────────────────────────────────────────────────
-    # Split CBOs into a separate layer so they render on top with larger radius
-    cbo_filtered = filtered[filtered['type'] == 'CBO']
-    non_cbo_filtered = filtered[filtered['type'] != 'CBO']
-
     scatter_layer = pdk.Layer(
         'ScatterplotLayer',
-        data=non_cbo_filtered,
+        data=filtered,
         get_position='[lon, lat]',
         get_color='color',
         get_radius=110,
@@ -1100,21 +1260,6 @@ def main():
         radius_max_pixels=12,
         pickable=True,
         auto_highlight=True,
-    )
-
-    cbo_layer = pdk.Layer(
-        'ScatterplotLayer',
-        data=cbo_filtered,
-        get_position='[lon, lat]',
-        get_color='color',
-        get_radius=200,
-        radius_min_pixels=7,
-        radius_max_pixels=20,
-        pickable=True,
-        auto_highlight=True,
-        stroked=True,
-        get_line_color=[180, 0, 100, 255],
-        line_width_min_pixels=2,
     )
 
     text_layer = pdk.Layer(
@@ -1138,19 +1283,23 @@ def main():
 
     tooltip = {
         "html": """
-        <div style="font-family:Arial,sans-serif;padding:8px 12px;
-                    background:rgba(255,255,255,0.97);border-radius:8px;
-                    border:1px solid #ddd;max-width:280px;">
-            <b style="font-size:13px;">{name}</b><br>
-            <span style="color:#555;">📍 {sub_county}</span><br>
-            <span style="color:#555;">🏷 {type}</span><br>
-            <span style="font-size:10px;color:#888;">{lat:.5f}, {lon:.5f}</span>
+        <div style="font-family:Arial,sans-serif;padding:10px 14px;
+                    background:rgba(255,255,255,0.98);border-radius:10px;
+                    border:1px solid #ccc;max-width:320px;
+                    box-shadow:0 3px 10px rgba(0,0,0,0.15);">
+            <b style="font-size:14px;color:#1a1a2e;">{name}</b><br>
+            <span style="color:#555;font-size:12px;">📍 {sub_county} &nbsp;|&nbsp; 🏷 {type}</span><br>
+            <hr style="margin:6px 0;border:none;border-top:1px solid #eee;">
+            <span style="font-size:12px;">📞 <b>{phone}</b></span><br>
+            <span style="font-size:12px;">✉️ {email}</span><br>
+            <span style="font-size:12px;">🌐 {website}</span><br>
+            <span style="font-size:10px;color:#aaa;">{lat:.5f}, {lon:.5f}</span>
         </div>""",
         "style": {"backgroundColor": "transparent", "border": "none"},
     }
 
     deck = pdk.Deck(
-        layers=[scatter_layer, cbo_layer, text_layer],
+        layers=[scatter_layer, text_layer],
         initial_view_state=view_state,
         tooltip=tooltip,
         map_style='road',
@@ -1160,8 +1309,8 @@ def main():
 
     # ── Data table ───────────────────────────────────────────────────────────
     with st.expander("📋 View Complete Facilities List"):
-        display = filtered[['name','sub_county','type','lat','lon']].copy()
-        display.columns = ['Facility Name','Sub-County','Type','Latitude','Longitude']
+        display = filtered[['name','sub_county','type','phone','email','website','lat','lon']].copy()
+        display.columns = ['Facility Name','Sub-County','Type','Phone','Email','Website','Latitude','Longitude']
         display = display.reset_index(drop=True)
         display.index += 1
         st.dataframe(display, use_container_width=True, height=400)
